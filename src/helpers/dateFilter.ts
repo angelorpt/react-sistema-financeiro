@@ -2,7 +2,7 @@ import { Item } from "./../types/Item";
 
 export const getCurrentMoth = () => {
   const now = new Date();
-  return `${now.getFullYear()}-${now.getMonth() + 1}`;
+  return `${now.getFullYear()}-${now.getMonth()}`;
 };
 
 export const filterListByMonth = (list: Item[], date: string): Item[] => {
@@ -19,4 +19,13 @@ export const filterListByMonth = (list: Item[], date: string): Item[] => {
   }
 
   return newList;
+};
+
+export const formatDate = (date: Date): string => {
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  const sDay = day < 10 ? `0${day}` : day;
+  const sMonth = month < 10 ? `0${month}` : month;
+  return `${sDay}/${sMonth}/${year}`;
 };
