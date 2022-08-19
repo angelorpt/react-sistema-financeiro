@@ -1,6 +1,7 @@
-import * as C from "./styles";
-import { Item } from "./../../types/Item";
+import { TableColumn, TableLine } from "./styles";
+import { Item } from "../../@types/Item";
 import { formatDate } from "./../../helpers/dateFilter";
+import { categories } from "./../../data/categories";
 
 type Props = {
   item: Item;
@@ -8,11 +9,11 @@ type Props = {
 
 export const TableItem = ({ item }: Props) => {
   return (
-    <C.TableLine>
-      <C.TableColumn>{formatDate(item.date)}</C.TableColumn>
-      <C.TableColumn>{item.category}</C.TableColumn>
-      <C.TableColumn>{item.title}</C.TableColumn>
-      <C.TableColumn>R$ {item.value}</C.TableColumn>
-    </C.TableLine>
+    <TableLine>
+      <TableColumn>{formatDate(item.date)}</TableColumn>
+      <TableColumn>{categories[item.category].title}</TableColumn>
+      <TableColumn>{item.title}</TableColumn>
+      <TableColumn>R$ {item.value}</TableColumn>
+    </TableLine>
   );
 };
